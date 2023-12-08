@@ -1,6 +1,6 @@
 {
-  "name": "@s3pweb/keycloak-admin-client-cjs",
-  "version": "22.0.1",
+  "name": "@dedel.alex/keycloak-admin-client-cjs",
+  "version": "23.0.1",
   "description": "Keycloak Admin Client compiled in CommonJS.",
   "keywords": [
     "keycloak-admin-client",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com//s3pweb/keycloak-admin-client-cjs.git"
+    "url": "https://github.com/aDedel/keycloak-admin-client-cjs.git"
   },
   "author": "s3pweb",
   "license": "MIT",

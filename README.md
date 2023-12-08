@@ -10,13 +10,13 @@ The version number of this repo will follow the version number of @keycloak/keyc
 ## Install
 
 ```shell
-npm i @s3pweb/keycloak-admin-client-cjs
+npm i @dedel.alex/keycloak-admin-client-cjs
 ```
 
 ## Usage
 
 ```ts
-import { KeycloakAdminClient } from '@s3pweb/keycloak-admin-client-cjs';
+import { KeycloakAdminClient } from '@dedel.alex/keycloak-admin-client-cjs';
 
 @Injectable()
 export class KeycloakService {
