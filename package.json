@@ -26,10 +26,10 @@
     "@keycloak/keycloak-admin-client": "23.0.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.5.0",
-    "@commitlint/config-conventional": "^18.5.0",
+    "@commitlint/cli": "^18.6.0",
+    "@commitlint/config-conventional": "^18.6.0",
     "commit-and-tag-version": "^12.2.0",
-    "esbuild": "^0.19.12",
+    "esbuild": "^0.20.0",
     "husky": "^8.0.3"
   },
   "files": [
