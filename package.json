@@ -20,7 +20,7 @@
     "type": "git",
     "url": "https://github.com/aDedel/keycloak-admin-client-cjs.git"
   },
-  "author": "s3pweb",
+  "author": "aDedel",
   "license": "MIT",
   "dependencies": {
     "@keycloak/keycloak-admin-client": "23.0.6"
