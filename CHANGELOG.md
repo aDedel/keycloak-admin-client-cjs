@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [23.0.7](https://github.com/aDedel/keycloak-admin-client-cjs/compare/v23.0.6...v23.0.7) (2024-02-23)
+
+
+### Other
+
+* **deps:** change author ([9debb06](https://github.com/aDedel/keycloak-admin-client-cjs/commit/9debb06eb1454fba118ebd34bc5f9d273e5d9037))
+* **deps:** remove github config ([ec6a5bf](https://github.com/aDedel/keycloak-admin-client-cjs/commit/ec6a5bf59399ba8e3cd5033493e904f6712106b2))
+* **deps:** update dependencies ([843f0dd](https://github.com/aDedel/keycloak-admin-client-cjs/commit/843f0dd6fa0a619331ab342c266d9fb1cf5f9841))
+
 ## [23.0.6](https://github.com/aDedel/keycloak-admin-client-cjs/compare/v23.0.5...v23.0.6) (2024-02-05)
 
 ### Bug Fixes
