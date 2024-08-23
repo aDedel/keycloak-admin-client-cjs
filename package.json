@@ -13,7 +13,7 @@
   "scripts": {
     "build": "esbuild dist/index.d.ts --platform=node --bundle --format=cjs --outfile=dist/index.js",
     "prepublish": "npm run build",
-    "prepare": "husky install",
+    "prepare": "husky || true",
     "release": "commit-and-tag-version -s"
   },
   "repository": {
