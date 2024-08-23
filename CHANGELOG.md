@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [25.0.4](https://github.com/aDedel/keycloak-admin-client-cjs/compare/v25.0.2...v25.0.4) (2024-08-23)
+
+
+### Other
+
+* **deps:** update dependencies ([12f3de2](https://github.com/aDedel/keycloak-admin-client-cjs/commit/12f3de202cb7803e83992355ac8bb8bde186ae48))
+
+
+### Bug Fixes
+
+* **husky:** fix husky install ([b2ef4cd](https://github.com/aDedel/keycloak-admin-client-cjs/commit/b2ef4cd31465fd7d05a70a193869e03ba360f670))
+
 ## [24.0.2](https://github.com/aDedel/keycloak-admin-client-cjs/compare/v24.0.1...v24.0.2) (2024-03-26)
 
 ## [24.0.1](https://github.com/aDedel/keycloak-admin-client-cjs/compare/v24.0.0...v24.0.1) (2024-03-20)
