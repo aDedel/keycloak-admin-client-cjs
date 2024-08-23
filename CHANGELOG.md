@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [25.0.4](https://github.com/aDedel/keycloak-admin-client-cjs/compare/v25.0.3...v25.0.4) (2024-08-23)
+
 ## [25.0.4](https://github.com/aDedel/keycloak-admin-client-cjs/compare/v25.0.2...v25.0.4) (2024-08-23)
 
 

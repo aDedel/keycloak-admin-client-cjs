@@ -1,6 +1,6 @@
 {
   "name": "@dedel.alex/keycloak-admin-client-cjs",
-  "version": "25.0.3",
+  "version": "25.0.4",
   "description": "Keycloak Admin Client compiled in CommonJS.",
   "keywords": [
     "keycloak-admin-client",
@@ -23,7 +23,7 @@
   "author": "aDedel",
   "license": "MIT",
   "dependencies": {
-    "@keycloak/keycloak-admin-client": "^25.0.3"
+    "@keycloak/keycloak-admin-client": "^25.0.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
