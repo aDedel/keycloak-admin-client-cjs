@@ -85,7 +85,7 @@ function setVersion(version) {
   writePkg(pkg)
 }
 
-function releaseOne(version) {
+function releaseOne(version, previousVersion) {
   console.log(`\n=== Releasing ${PACKAGE}@${version} ===`)
 
   if (dryRun) {
@@ -94,23 +94,24 @@ function releaseOne(version) {
   }
 
   setVersion(version)
-  run(`npm install ${UPSTREAM}@${version} --save-exact`)
+  run(`npm install ${UPSTREAM}@${version} --save-exact --no-fund --no-audit`)
+  // Re-pin exact versions in case npm rewrote ranges
+  setVersion(version)
   run('npm run build')
 
   // Smoke check: CJS export must exist
-  const smoke = runCapture(
+  runCapture(
     `node -e "const m=require('./dist/index.js'); if (typeof m.KeycloakAdminClient !== 'function') process.exit(1)"`,
   )
-  void smoke
 
   if (!noPublish) {
-    run(`npm publish --access public`)
+    run('npm publish --access public')
   }
 
   if (!noGit) {
     run('git add package.json package-lock.json')
-    // dist/index.js is gitignored; only lock + package change
-    const msg = `chore(deps): bump ${UPSTREAM} to ${version}`
+    const from = previousVersion ? ` from ${previousVersion}` : ''
+    const msg = `chore(deps): bump ${UPSTREAM}${from} to ${version}`
     run(`git commit -m "${msg}"`)
     run(`git tag -a "v${version}" -m "v${version}"`)
   }
@@ -156,8 +157,10 @@ function main() {
   console.log(`Versions to release (${missing.length}):`)
   console.log(missing.join(', '))
 
+  let previous = readPkg().version
   for (const version of missing) {
-    releaseOne(version)
+    releaseOne(version, previous)
+    previous = version
   }
 
   if (!dryRun && !noGit) {

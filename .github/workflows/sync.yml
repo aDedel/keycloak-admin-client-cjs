@@ -50,12 +50,5 @@ jobs:
           fi
           node scripts/sync.mjs $ARGS
 
-      - name: Push tags and commits
-        run: |
-          if [ -n "$(git status --porcelain)" ] || [ -n "$(git log origin/main..HEAD 2>/dev/null)" ]; then
-            git push --follow-tags
-          else
-            # Tags may exist without dirty working tree
-            git push --tags || true
-            git push || true
-          fi
+      - name: Push commits and tags
+        run: git push --follow-tags origin HEAD

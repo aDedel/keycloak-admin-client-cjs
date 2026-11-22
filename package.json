@@ -36,8 +36,5 @@
   },
   "files": [
     "dist/**/*"
-  ],
-  "allowScripts": {
-    "esbuild@0.28.2": true
-  }
+  ]
 }
