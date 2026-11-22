@@ -104,3 +104,7 @@ dist/index.js
 .tern-port
 
 .idea/
+
+.pnpm-store/
+
+.pnpm-store/

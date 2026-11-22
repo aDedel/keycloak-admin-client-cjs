@@ -94,7 +94,10 @@ function releaseOne(version, previousVersion) {
   }
 
   setVersion(version)
-  run(`npm install ${UPSTREAM}@${version} --save-exact --no-fund --no-audit`)
+  // Upstream >=26.6 may run a broken postinstall (pnpm/wireit); we only need the package files.
+  run(
+    `npm install ${UPSTREAM}@${version} --save-exact --no-fund --no-audit --ignore-scripts`,
+  )
   // Re-pin exact versions in case npm rewrote ranges
   setVersion(version)
   run('npm run build')
@@ -109,11 +112,20 @@ function releaseOne(version, previousVersion) {
   }
 
   if (!noGit) {
-    run('git add package.json package-lock.json')
-    const from = previousVersion ? ` from ${previousVersion}` : ''
-    const msg = `chore(deps): bump ${UPSTREAM}${from} to ${version}`
-    run(`git commit -m "${msg}"`)
-    run(`git tag -a "v${version}" -m "v${version}"`)
+    const tag = `v${version}`
+    const tagExists =
+      runCapture(`git tag -l "${tag}"`) === tag ||
+      runCapture(`git rev-parse -q --verify "refs/tags/${tag}" || true`).length > 0
+
+    if (tagExists) {
+      console.log(`git tag ${tag} already exists — skipping commit/tag`)
+    } else {
+      run('git add package.json package-lock.json')
+      const from = previousVersion ? ` from ${previousVersion}` : ''
+      const msg = `chore(deps): bump ${UPSTREAM}${from} to ${version}`
+      run(`git commit -m "${msg}"`)
+      run(`git tag -a "${tag}" -m "${tag}"`)
+    }
   }
 
   console.log(`✓ ${PACKAGE}@${version}`)
