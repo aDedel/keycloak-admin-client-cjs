@@ -7,6 +7,18 @@ This repo is based on an idea by [Manuelbaun](https://github.com/Manuelbaun) on 
 
 The version number of this repo will follow the version number of @keycloak/keycloak-admin-client.
 
+## Releasing
+
+Publish every missing upstream version (mirrors `@keycloak/keycloak-admin-client`):
+
+```shell
+npm run sync:dry   # preview
+npm run sync       # build, publish, commit & tag each version
+git push --follow-tags
+```
+
+A GitHub Action (`.github/workflows/sync.yml`) also runs twice daily. Set the `NPM_TOKEN` repository secret so it can publish.
+
 ## Install
 
 ```shell
