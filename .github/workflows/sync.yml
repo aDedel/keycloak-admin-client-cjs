@@ -1,0 +1,61 @@
+name: Sync keycloak-admin-client versions
+
+on:
+  schedule:
+    # Check twice a day for new upstream releases
+    - cron: '0 6,18 * * *'
+  workflow_dispatch:
+    inputs:
+      latest_only:
+        description: 'Publish only the newest missing version'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync missing versions
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.latest_only }}" = "true" ]; then
+            ARGS="--latest"
+          fi
+          node scripts/sync.mjs $ARGS
+
+      - name: Push tags and commits
+        run: |
+          if [ -n "$(git status --porcelain)" ] || [ -n "$(git log origin/main..HEAD 2>/dev/null)" ]; then
+            git push --follow-tags
+          else
+            # Tags may exist without dirty working tree
+            git push --tags || true
+            git push || true
+          fi
